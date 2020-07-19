@@ -1,0 +1,150 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Levels/Template.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Sprites/Levels/Park.png" type="Texture" id=2]
+[ext_resource path="res://Goal.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="CircleShape2D" id=2]
+
+[node name="Level1" instance=ExtResource( 1 )]
+follower_goal = 10
+total_people = 10
+spawn_area = Vector2( 125, 0 )
+time_in_seconds = 90
+next_scene_path = "res://Levels/Level2.tscn"
+
+[node name="Map" type="Node2D" parent="." index="1"]
+editor/display_folded = true
+
+[node name="Sprite" type="Sprite" parent="Map" index="0"]
+texture = ExtResource( 2 )
+
+[node name="Walls" type="StaticBody2D" parent="Map" index="1" groups=[
+"Walls",
+]]
+editor/display_folded = true
+visible = false
+
+[node name="Wall" type="CollisionShape2D" parent="Map/Walls" index="0"]
+position = Vector2( -152, 0 )
+scale = Vector2( 1, 10 )
+shape = SubResource( 1 )
+
+[node name="Wall3" type="CollisionShape2D" parent="Map/Walls" index="1"]
+position = Vector2( 0, 75 )
+scale = Vector2( 15, 1 )
+shape = SubResource( 1 )
+
+[node name="Wall4" type="CollisionShape2D" parent="Map/Walls" index="2"]
+position = Vector2( 94, -87 )
+scale = Vector2( 7, 1 )
+shape = SubResource( 1 )
+
+[node name="Wall5" type="CollisionShape2D" parent="Map/Walls" index="3"]
+position = Vector2( -157, -86 )
+scale = Vector2( 7, 1 )
+shape = SubResource( 1 )
+
+[node name="Wall6" type="CollisionShape2D" parent="Map/Walls" index="4"]
+position = Vector2( -30, -100 )
+scale = Vector2( 7, 1 )
+shape = SubResource( 1 )
+
+[node name="Wall2" type="CollisionShape2D" parent="Map/Walls" index="5"]
+position = Vector2( 143, 0 )
+scale = Vector2( 1, 10 )
+shape = SubResource( 1 )
+
+[node name="Bench" type="CollisionShape2D" parent="Map/Walls" index="6"]
+position = Vector2( -99.7588, -8.51779 )
+rotation = 0.750492
+scale = Vector2( 0.68, 1.44 )
+shape = SubResource( 1 )
+
+[node name="Bench2" type="CollisionShape2D" parent="Map/Walls" index="7"]
+position = Vector2( 68.4723, 3.54159 )
+rotation = 1.0472
+scale = Vector2( 0.68, 1.44 )
+shape = SubResource( 1 )
+
+[node name="Bench3" type="CollisionShape2D" parent="Map/Walls" index="8"]
+position = Vector2( 42.2923, 18.4024 )
+rotation = 1.27867
+scale = Vector2( 0.68, 1.44 )
+shape = SubResource( 1 )
+
+[node name="Bush" type="CollisionShape2D" parent="Map/Walls" index="9"]
+position = Vector2( -121.598, -55.9156 )
+shape = SubResource( 2 )
+
+[node name="Bush2" type="CollisionShape2D" parent="Map/Walls" index="10"]
+position = Vector2( -66.081, 23.8904 )
+shape = SubResource( 2 )
+
+[node name="Bush3" type="CollisionShape2D" parent="Map/Walls" index="11"]
+position = Vector2( 56.0401, 33.0416 )
+shape = SubResource( 2 )
+
+[node name="Bush4" type="CollisionShape2D" parent="Map/Walls" index="12"]
+position = Vector2( 71.1869, 25.9415 )
+shape = SubResource( 2 )
+
+[node name="Bush5" type="CollisionShape2D" parent="Map/Walls" index="13"]
+position = Vector2( 47.2045, -54.2103 )
+scale = Vector2( 1.19, 1.19 )
+shape = SubResource( 2 )
+
+[node name="Bush7" type="CollisionShape2D" parent="Map/Walls" index="14"]
+position = Vector2( 78.1292, -44.9013 )
+scale = Vector2( 0.838307, 0.838307 )
+shape = SubResource( 2 )
+
+[node name="Bush8" type="CollisionShape2D" parent="Map/Walls" index="15"]
+position = Vector2( -122.827, -46.5576 )
+scale = Vector2( 0.838307, 0.838307 )
+shape = SubResource( 2 )
+
+[node name="Bush9" type="CollisionShape2D" parent="Map/Walls" index="16"]
+position = Vector2( -112.154, -56.863 )
+scale = Vector2( 0.838307, 0.838307 )
+shape = SubResource( 2 )
+
+[node name="Bush10" type="CollisionShape2D" parent="Map/Walls" index="17"]
+position = Vector2( -62.0985, 34.5979 )
+scale = Vector2( 0.838307, 0.838307 )
+shape = SubResource( 2 )
+
+[node name="Bush11" type="CollisionShape2D" parent="Map/Walls" index="18"]
+position = Vector2( -55.8416, 29.6292 )
+scale = Vector2( 0.838307, 0.838307 )
+shape = SubResource( 2 )
+
+[node name="Bush6" type="CollisionShape2D" parent="Map/Walls" index="19"]
+position = Vector2( 63.9291, -51.6858 )
+scale = Vector2( 1.51074, 1.51074 )
+shape = SubResource( 2 )
+
+[node name="Goal" parent="Map" index="2" instance=ExtResource( 3 )]
+position = Vector2( -31, -85 )
+
+[node name="Camera2D" parent="." index="2"]
+zoom = Vector2( 0.5, 0.5 )
+
+[node name="Player" parent="." index="3"]
+position = Vector2( 0, 50 )
+
+[node name="Label" type="Label" parent="UI Layer" index="4"]
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_bottom = -4.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 0
+text = "WASD/Arrows to move
+Space to rally supporters
+Match a person's speech to get them to join your cause
+Get enough supporters into the goal area to progress"
+valign = 2
+[connection signal="follower_exited" from="Map/Goal" to="." method="on_follower_exit"]

@@ -1,0 +1,53 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Sprites/UI/Debate/Speech Bubble Big.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/SpeechBubble.gd" type="Script" id=2]
+[ext_resource path="res://addons/RandomSound/RandomSound.tscn" type="PackedScene" id=3]
+[ext_resource path="res://SFX/Talk/Talk (1).ogg" type="AudioStream" id=4]
+[ext_resource path="res://SFX/Talk/Talk (2).ogg" type="AudioStream" id=5]
+[ext_resource path="res://SFX/Talk/Talk (3).ogg" type="AudioStream" id=6]
+[ext_resource path="res://SFX/Talk/Talk (4).ogg" type="AudioStream" id=7]
+[ext_resource path="res://SFX/Talk/Talk (5).ogg" type="AudioStream" id=8]
+[ext_resource path="res://SFX/Talk/Talk (6).ogg" type="AudioStream" id=9]
+
+
+[node name="SpeechBubble" type="NinePatchRect"]
+margin_left = 124.0
+margin_top = 10.0
+margin_right = 225.0
+margin_bottom = 122.0
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 101, 112 )
+patch_margin_left = 40
+patch_margin_right = 60
+patch_margin_bottom = 112
+script = ExtResource( 2 )
+
+[node name="RandomSound" parent="." instance=ExtResource( 3 )]
+pitch_variation = 0.25
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="RandomSound"]
+stream = ExtResource( 4 )
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="RandomSound"]
+stream = ExtResource( 5 )
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="RandomSound"]
+stream = ExtResource( 6 )
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="RandomSound"]
+stream = ExtResource( 7 )
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="RandomSound"]
+stream = ExtResource( 8 )
+
+[node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="RandomSound"]
+stream = ExtResource( 9 )
+
+[node name="ArrowContainer" type="HBoxContainer" parent="."]
+margin_left = 20.0
+margin_top = 6.0
+margin_right = 452.0
+margin_bottom = 78.0
+
+[node name="Tween" type="Tween" parent="."]

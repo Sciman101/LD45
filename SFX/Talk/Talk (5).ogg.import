@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Talk (5).ogg-c64fc2d5a4a965675d749f336d4de45c.oggstr"
+
+[deps]
+
+source_file="res://SFX/Talk/Talk (5).ogg"
+dest_files=[ "res://.import/Talk (5).ogg-c64fc2d5a4a965675d749f336d4de45c.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

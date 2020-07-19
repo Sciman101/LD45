@@ -1,0 +1,76 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Levels/Template.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Sprites/Levels/D2.png" type="Texture" id=2]
+[ext_resource path="res://Goal.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="Main" instance=ExtResource( 1 )]
+follower_goal = 30
+total_people = 75
+total_enemies = 2
+spawn_area = Vector2( 250, 125 )
+time_in_seconds = 180
+next_scene_path = "res://Levels/Level4.tscn"
+
+[node name="Map" type="Node2D" parent="." index="0"]
+
+[node name="Sprite" type="Sprite" parent="Map" index="0"]
+texture = ExtResource( 2 )
+
+[node name="Goal" parent="Map" index="1" instance=ExtResource( 3 )]
+position = Vector2( -15, -172 )
+scale = Vector2( 1.15, 1 )
+
+[node name="Walls" type="StaticBody2D" parent="Map" index="2" groups=[
+"Walls",
+]]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Walls" index="0"]
+position = Vector2( -310, 0 )
+scale = Vector2( 1, 17 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Map/Walls" index="1"]
+position = Vector2( -144, -8 )
+scale = Vector2( 7.2, 9.5 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Map/Walls" index="2"]
+position = Vector2( 142, -8 )
+scale = Vector2( 7.4, 9.5 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Map/Walls" index="3"]
+position = Vector2( 0, 171 )
+scale = Vector2( 31, 1 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Map/Walls" index="4"]
+position = Vector2( 201, -173 )
+scale = Vector2( 15, 1 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Map/Walls" index="5"]
+position = Vector2( -230, -173 )
+scale = Vector2( 15, 1 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Map/Walls" index="6"]
+position = Vector2( 0, -190 )
+scale = Vector2( 15, 1 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Map/Walls" index="7"]
+position = Vector2( 306, 0 )
+scale = Vector2( 1, 17 )
+shape = SubResource( 1 )
+
+[node name="Player" parent="." index="3"]
+position = Vector2( 0, 136 )
+
+[node name="UI Layer" parent="." index="4"]
+editor/display_folded = true
+[connection signal="follower_exited" from="Map/Goal" to="." method="on_follower_exit"]

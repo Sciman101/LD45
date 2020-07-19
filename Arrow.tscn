@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Sprites/UI/Debate/Arrow.png" type="Texture" id=1]
+
+
+[node name="Arrow" type="Control"]
+margin_right = 72.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 72, 72 )
+rect_pivot_offset = Vector2( 36, 36 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 36, 36 )
+texture = ExtResource( 1 )

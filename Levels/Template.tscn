@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Level End Screen.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Debate.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Sprites/Counter.png" type="Texture" id=5]
+[ext_resource path="res://611Bit.tres" type="DynamicFont" id=6]
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 1 )
+time_in_seconds = 60
+
+[node name="Game Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+
+[node name="UI Layer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="Level End Screen" parent="UI Layer" instance=ExtResource( 3 )]
+visible = false
+margin_top = 0.0
+margin_bottom = 0.0
+
+[node name="Debate UI" parent="UI Layer" instance=ExtResource( 4 )]
+
+[node name="Counter" type="Control" parent="UI Layer"]
+editor/display_folded = true
+margin_right = 640.0
+margin_bottom = 360.0
+
+[node name="HBox" type="HBoxContainer" parent="UI Layer/Counter"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 52.0
+margin_bottom = 48.0
+
+[node name="TextureRect" type="TextureRect" parent="UI Layer/Counter/HBox"]
+modulate = Color( 0.192157, 0.517647, 0.972549, 1 )
+margin_right = 32.0
+margin_bottom = 40.0
+texture = ExtResource( 5 )
+
+[node name="CounterLabel" type="Label" parent="UI Layer/Counter/HBox"]
+margin_left = 36.0
+margin_top = 4.0
+margin_right = 50.0
+margin_bottom = 36.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 1
+text = "0"
+
+[node name="Time" type="Label" parent="UI Layer"]
+anchor_right = 1.0
+margin_top = 12.0
+margin_right = -8.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/line_spacing = 1
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 1
+text = "0:00"
+align = 2
+[connection signal="on_level_end" from="." to="UI Layer/Level End Screen" method="show_score"]
+[connection signal="on_level_end" from="." to="Player" method="stop_it_man"]
+[connection signal="timeout" from="Game Timer" to="." method="on_second_pass"]
+[connection signal="start_debate" from="Player" to="UI Layer/Debate UI" method="on_debate_start"]
+[connection signal="anim_done" from="UI Layer/Level End Screen" to="." method="set_process_unhandled_input" binds= [ true ]]
